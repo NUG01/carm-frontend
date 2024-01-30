@@ -1,10 +1,12 @@
 import { Button, Form, Input } from "antd";
 import BasicAxios from "../../../services/axios/BasicAxios";
 function App() {
+  const [form] = Form.useForm();
   async function onFinish(values) {
     const res = await BasicAxios.post("register", values);
-    console.log(res);
+    form.resetFields();
   }
+
   return (
     <Form
       name="basic"
@@ -17,11 +19,12 @@ function App() {
       style={{
         width: 700,
         padding: "1rem",
-        backgroundColor: "#fff",
+        backgroundColor: "rgba(255, 255, 255, 0.93)",
         borderRadius: "0.5rem",
         boxShadow: "0 0 0.5rem rgba(0,0,0,0.2)",
         border: "1px solid #eee",
       }}
+      form={form}
       initialValues={{
         name: "",
         email: "",

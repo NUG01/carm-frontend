@@ -13,6 +13,7 @@ import MainPage from "./pages/MainPage";
 import VerifyEmail from "./pages/VerificationPage/VerifyEmail";
 import DashboardPage from "./pages/DashboardPage";
 import ErrorPage from "./pages/ErrorPage";
+import AdminPage from "./pages/AdminPage/AdminPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ function App() {
   const [authStatus, setAuthStatus] = useState(
     useSelector((state) => state.auth.authenticated)
   );
+  const isAdmin = useSelector((state) => state.auth.user?.role_id == 1);
+  // const isAdmin = user?.role_id == 1;
+
   const [rendered, setRendered] = useState(false);
 
   useEffect(() => {
@@ -36,7 +40,6 @@ function App() {
         .then(({ data }) => {
           dispatch(authActions.setUser(data));
           dispatch(authActions.setAuthenticated(true));
-
           setUser(data);
           setAuthStatus(true);
         })
@@ -80,7 +83,7 @@ function App() {
                 logged={authStatus}
               />
             }></Route>
-          <Route path="/admin" element={<div>admin</div>}></Route>
+          <Route path="/admin" element={<AdminPage logged={isAdmin} />}></Route>
 
           <Route path="*" element={<ErrorPage />}></Route>
         </Routes>

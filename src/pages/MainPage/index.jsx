@@ -3,6 +3,8 @@ import header from "../../components/Header/header";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import checkGuest from "../../guards/checkGuest";
+import LogoSvg from "@/assets/icons/LogoSvg";
+import LanguageDropdown from "../../components/Dropdowns/LanguageDropdown";
 
 function MainPage() {
   const [component, setComponent] = useState("login"); // ["login", "register"]"
@@ -15,8 +17,37 @@ function MainPage() {
         justifyContent: "center",
         height: "100vh",
       }}>
-      <header></header>
+      <header
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "100%",
+          padding: "1rem",
+          position: "absolute",
+          height: "4rem",
+          top: 0,
+          left: 0,
+        }}>
+        <LanguageDropdown />
+      </header>
       <div>
+        <div
+          style={{
+            width: "100vw",
+            height: "100vh",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: -1,
+            opacity: 0.75,
+            overflowY: "hidden",
+          }}>
+          <LogoSvg />
+        </div>
         {component === "login" && <LoginForm />}
         {component === "register" && <RegisterForm />}
         <div
@@ -29,8 +60,8 @@ function MainPage() {
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center",
-            marginTop: "1rem",
             cursor: "pointer",
+            transform: "translate(-1rem, -2rem)",
           }}>
           <span
             style={{

@@ -2,8 +2,9 @@ import { Button, Checkbox, Form, Input } from "antd";
 import BasicAxios from "../../../services/axios/BasicAxios";
 import { csrfToken } from "../../../services/api";
 import { useNavigate } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 function App() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   async function onFinish(values) {
     await csrfToken();
@@ -26,7 +27,7 @@ function App() {
       style={{
         width: 500,
         padding: "1rem",
-        backgroundColor: "#fff",
+        backgroundColor: "rgba(255, 255, 255, 0.93)",
         borderRadius: "0.5rem",
         boxShadow: "0 0 0.5rem rgba(0,0,0,0.2)",
         border: "1px solid #eee",
@@ -37,7 +38,7 @@ function App() {
         remember: true,
       }}
       onFinish={onFinish}
-      autoComplete="off">
+      autoComplete="on">
       <Form.Item
         label="Email"
         name="email"
@@ -88,7 +89,7 @@ function App() {
           }}
           type="primary"
           htmlType="submit">
-          Submit
+          {t("greeting")}
         </Button>
       </Form.Item>
     </Form>
