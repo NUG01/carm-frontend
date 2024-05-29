@@ -8,5 +8,6 @@ const SanctumAxios = axios.create({
 });
 
 SanctumAxios.defaults.withCredentials = true;
+SanctumAxios.defaults.withXSRFToken = true;
 
 export default SanctumAxios;

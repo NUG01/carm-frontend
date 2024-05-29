@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import header from "../../components/Header/header";
+import header from "../../components/Header";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import checkGuest from "../../guards/checkGuest";

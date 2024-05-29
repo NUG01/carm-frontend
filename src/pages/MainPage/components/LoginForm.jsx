@@ -3,13 +3,24 @@ import BasicAxios from "../../../services/axios/BasicAxios";
 import { csrfToken } from "../../../services/api";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../../store/auth";
+
 function App() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+
+
+
   async function onFinish(values) {
     await csrfToken();
     try {
-      await BasicAxios.post("login", values);
+     const {data}= await BasicAxios.post("login", values);
+     dispatch(authActions.setUser(data.user));
+     dispatch(authActions.setAuthenticated(true));
       navigate("/dashboard");
     } catch (error) {
       console.log(error);

@@ -8,6 +8,7 @@ const BasicAxios = axios.create({
 });
 
 BasicAxios.defaults.withCredentials = true;
+BasicAxios.defaults.withXSRFToken = true;
 
 BasicAxios.interceptors.request.use(
   (config) => {
