@@ -35,7 +35,6 @@ function App() {
       setRendered(true);
     }
     if (!user) {
-      ErrorPage;
       BasicAxios.get("user")
         .then(({ data }) => {
           dispatch(authActions.setUser(data));

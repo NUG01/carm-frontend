@@ -15,11 +15,9 @@ BasicAxios.interceptors.request.use(
 
     el.classList.remove("message");
     el.innerHTML = "";
-    // You can modify the request config here, if needed
     return config;
   },
   (error) => {
-    // Handle request error
     return Promise.reject(error);
   }
 );
