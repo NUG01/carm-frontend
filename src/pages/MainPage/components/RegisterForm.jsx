@@ -1,7 +1,9 @@
 import { Button, Form, Input } from "antd";
 import BasicAxios from "../../../services/axios/BasicAxios";
+import {useTranslation} from "react-i18next";
 function App() {
   const [form] = Form.useForm();
+  const {t} = useTranslation();
   async function onFinish(values) {
     const res = await BasicAxios.post("register", values);
     form.resetFields();
@@ -36,48 +38,48 @@ function App() {
       onFinish={onFinish}
       autoComplete="off">
       <Form.Item
-        label="Name"
+        label={t("name")}
         name="name"
         rules={[
           {
             required: true,
-            message: "Please input your username!",
+            message: t("please_input_username"),
             type: "string",
           },
         ]}>
         <Input />
       </Form.Item>
       <Form.Item
-        label="Surname"
+        label={t("surname")}
         name="surname"
         rules={[
           {
             required: true,
-            message: "Please input your username!",
+            message: t("please_input_surname"),
             type: "string",
           },
         ]}>
         <Input />
       </Form.Item>
       <Form.Item
-        label="Mobile Number"
+        label={t("mobile_number")}
         name="mobile_number"
         rules={[
           {
             required: true,
-            message: "Please input your username!",
+            message: t("please_input_number"),
             type: "string",
           },
         ]}>
         <Input />
       </Form.Item>
       <Form.Item
-        label="Email"
+        label={t("email")}
         name="email"
         rules={[
           {
             required: true,
-            message: "Please input your username!",
+            message: t("please_input_email"),
             type: "email",
           },
         ]}>
@@ -90,7 +92,7 @@ function App() {
         rules={[
           {
             required: true,
-            message: "Please input your password!",
+            message: t("please_input_password"),
           },
         ]}>
         <Input.Password />
@@ -120,7 +122,7 @@ function App() {
           }}
           type="primary"
           htmlType="submit">
-          Submit
+          {t("submit")}
         </Button>
       </Form.Item>
     </Form>

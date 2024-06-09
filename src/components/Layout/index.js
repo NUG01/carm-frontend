@@ -3,9 +3,11 @@ import checkAuth from '../../guards/checkAuth';
 import BasicAxios from '../../services/axios/BasicAxios';
 import { Outlet } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 const { Header, Content, Footer } = Layout;
 
 const MainLayout = ({ logoutEmit, logged }) => {
+  const { t } = useTranslation();
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -40,7 +42,7 @@ const MainLayout = ({ logoutEmit, logged }) => {
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['1']}
-          items={menuItems}
+          items={menuItems(t)}
           style={{
             flex: 1,
             minWidth: 0,
@@ -85,20 +87,20 @@ const MainLayout = ({ logoutEmit, logged }) => {
 
 export default checkAuth(MainLayout);
 
-const menuItems = [
+const menuItems =(t)=> { return [
   {
     key: '1',
-    label: 'Calculator',
+    label: t('calculator'),
     path: '/dashboard/calculator',
   },
-  {
-    key: '2',
-    label: 'Item 2',
-    path: '/dashboard/item2',
-  },
-  {
-    key: '3',
-    label: 'Item 3',
-    path: '/dashboard/item3',
-  },
-];
+  // {
+  //   key: '2',
+  //   label: 'Item 2',
+  //   path: '/dashboard/item2',
+  // },
+  // {
+  //   key: '3',
+  //   label: 'Item 3',
+  //   path: '/dashboard/item3',
+  // },
+]};

@@ -1,0 +1,60 @@
+/* App.css */
+
+
+.port-select{
+  width: 360px;
+}
+
+@media (max-width: 720px) {
+  .ant-form {
+    max-width: 600px;
+  }
+  .port-select{
+    width: 320px;
+  }
+  
+}
+
+
+@media (max-width: 520px) {
+  .ant-form {
+    max-width: 380px;
+  }
+
+  .port-select{
+    width: 220px;
+  }
+
+  .ant-layout-content{
+    padding: 0 10px !important;
+  
+  }
+
+}
+
+
+@media (max-width: 420px) {
+  .ant-form {
+    max-width: 360px;
+  }
+
+  .port-select{
+    width: 160px;
+  }
+}
+
+
+
+@media (max-width: 380px) {
+  .ant-form {
+    max-width: 320px;
+  }
+}
+
+
+
+@media (max-width: 300px) {
+  .ant-form {
+    max-width: 220px;
+  }
+}

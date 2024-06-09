@@ -51,12 +51,12 @@ function App() {
       onFinish={onFinish}
       autoComplete="on">
       <Form.Item
-        label="Email"
+        label={t("email")}
         name="email"
         rules={[
           {
             required: true,
-            message: "Please input your username!",
+            message: t("please_input_username"),
             type: "email",
           },
         ]}>
@@ -64,12 +64,12 @@ function App() {
       </Form.Item>
 
       <Form.Item
-        label="Password"
+        label={t("password")}
         name="password"
         rules={[
           {
             required: true,
-            message: "Please input your password!",
+            message: t("please_input_password"),
             min: 8,
           },
         ]}>

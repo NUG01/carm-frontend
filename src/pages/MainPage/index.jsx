@@ -5,6 +5,8 @@ import RegisterForm from "./components/RegisterForm";
 import checkGuest from "../../guards/checkGuest";
 import LogoSvg from "@/assets/icons/LogoSvg";
 import LanguageDropdown from "../../components/Dropdowns/LanguageDropdown";
+import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 
 function MainPage() {
   const [component, setComponent] = useState("login"); // ["login", "register"]"
@@ -52,7 +54,7 @@ function MainPage() {
         {component === "register" && <RegisterForm />}
         <div
           onClick={() => {
-            setComponent(component === "login" ? "register" : "login");
+            setComponent(component === "login" ? 'registration': 'login');
           }}
           style={{
             color: "#000",
@@ -67,7 +69,7 @@ function MainPage() {
             style={{
               color: "blue",
             }}>
-            {component === "login" ? "რეგისტრაცია" : "ანგარიშზე შესვლა"}
+            {component === "login" ? t("registration"): t("login")}
           </span>
         </div>
       </div>

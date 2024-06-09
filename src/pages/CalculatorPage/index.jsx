@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import BasicAxios from "../../services/axios/BasicAxios";
 import { Select, Form, Tag } from "antd";
+import { useTranslation } from "react-i18next";
 
 const COPART = 1;
 const IAI = 2;
 
 export default function index() {
+  const { t } = useTranslation();
   const [rendered, setRendered] = useState(false);
   const [calculatorForm] = Form.useForm();
   const formRef = useRef(null);
@@ -18,7 +20,7 @@ export default function index() {
   // const [port, setPort] = useState(null);
 
   useEffect(() => {
-    BasicAxios.get("calculator/index").then(({ data }) => {
+     BasicAxios.get("calculator/index").then(({ data }) => {
       const copartOPts = data.filter((item) => item.auction_id == COPART);
       setCopartOptions(copartOPts);
       setIaiOptions(data.filter((item) => item.auction_id == IAI));
@@ -42,7 +44,7 @@ export default function index() {
         onFinish={submitHandler}
         id="calculator-form"
       >
-        <Form.Item label="Auction">
+        <Form.Item label={t("auction")}>
           <Select
             labelInValue
             defaultValue={{ value: auction }}
@@ -56,18 +58,18 @@ export default function index() {
             options={[
               {
                 value: 1,
-                label: "Copart",
+                label:  t("copart"),
               },
               {
                 value: 2,
-                label: "IAI",
+                label: t("iai"),
               },
             ]}
           />
         </Form.Item>
         {rendered && (
           <>
-            <Form.Item label="Port">
+            <Form.Item label={t("port")}  className="port-select">
               <Select
                 key={auction}
                 showSearch
@@ -75,9 +77,7 @@ export default function index() {
                   option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0
                 }
                 allowClear
-                style={{
-                  width: 360,
-                }}
+               
                 onChange={(value) => {
                   setValue(
                     (auction == 1 ? copartOptions : iaiOptions).find(

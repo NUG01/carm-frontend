@@ -1,7 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function ErrorPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   return (
     <>
@@ -14,10 +16,10 @@ export default function ErrorPage() {
         <div className="mx-auto max-w-7xl px-6 py-32 text-center sm:py-40 lg:px-8">
           <p className="text-base font-semibold leading-8 text-white">404</p>
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">
-            Page not found
+            {t("page_not_found")}
           </h1>
           <p className="mt-4 text-base text-white/70 sm:mt-6">
-            Sorry, we couldn’t find the page you’re looking for.
+           {t("page_not_found_message")}
           </p>
           <div className="mt-10 flex justify-center">
             <div
@@ -25,7 +27,7 @@ export default function ErrorPage() {
                 navigate("/");
               }}
               className="text-sm font-semibold leading-7 text-white cursor-pointer">
-              <span aria-hidden="true">&larr;</span> Back to home
+              <span aria-hidden="true">&larr;</span> {t("back_to_home")}
             </div>
           </div>
         </div>
