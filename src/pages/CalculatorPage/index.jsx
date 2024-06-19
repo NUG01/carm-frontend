@@ -36,7 +36,7 @@ export default function index() {
   console.log(copartOptions && copartOptions[0]?.id);
 
   return (
-    <div>
+    <div className="calculator-form-container">
       <Form
         ref={formRef}
         layout="vertical"
