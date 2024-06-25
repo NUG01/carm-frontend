@@ -54,7 +54,7 @@ function MainPage() {
         {component === "register" && <RegisterForm />}
         <div
           onClick={() => {
-            setComponent(component === "login" ? 'registration': 'login');
+            setComponent(component === "login" ? 'register' : 'login');
           }}
           style={{
             color: "#000",
