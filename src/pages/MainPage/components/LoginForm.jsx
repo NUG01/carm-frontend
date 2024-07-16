@@ -6,14 +6,11 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../../store/auth";
 
-function App() {
+function LoginForm({ setComponent }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-
-
-
 
   async function onFinish(values) {
     await csrfToken();
@@ -26,6 +23,8 @@ function App() {
       console.log(error);
     }
   }
+
+
   return (
     <Form
       name="basic"
@@ -75,16 +74,6 @@ function App() {
         ]}>
         <Input.Password />
       </Form.Item>
-      {/* 
-      <Form.Item
-        name="remember"
-        valuePropName="checked"
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}>
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item> */}
 
       <Form.Item
         wrapperCol={{
@@ -103,8 +92,28 @@ function App() {
           {t("greeting")}
         </Button>
       </Form.Item>
+      <div
+        onClick={() => {
+          setComponent('register');
+        }}
+        style={{
+          color: "#000",
+          width: "100%",
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          cursor: "pointer",
+          transform: "translate(-1rem, -2rem)",
+        }}>
+        <span
+          style={{
+            color: "blue",
+          }}>
+          {t("registration")}
+        </span>
+      </div>
     </Form>
   );
 }
 
-export default App;
+export default LoginForm;

@@ -1,11 +1,12 @@
 import { Button, Form, Input } from "antd";
 import BasicAxios from "../../../services/axios/BasicAxios";
 import {useTranslation} from "react-i18next";
-function App() {
+function RegisterForm({ setComponent }) {
   const [form] = Form.useForm();
   const {t} = useTranslation();
+
   async function onFinish(values) {
-    const res = await BasicAxios.post("register", values);
+    await BasicAxios.post("register", values);
     form.resetFields();
   }
 
@@ -97,17 +98,6 @@ function App() {
         ]}>
         <Input.Password />
       </Form.Item>
-      {/* 
-      <Form.Item
-        name="remember"
-        valuePropName="checked"
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}>
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item> */}
-
       <Form.Item
         wrapperCol={{
           offset: 8,
@@ -125,8 +115,28 @@ function App() {
           {t("submit")}
         </Button>
       </Form.Item>
+      <div
+        onClick={() => {
+          setComponent('login');
+        }}
+        style={{
+          color: "#000",
+          width: "100%",
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          cursor: "pointer",
+          transform: "translate(-1rem, -2rem)",
+        }}>
+        <span
+          style={{
+            color: "blue",
+          }}>
+          {t("login")}
+        </span>
+      </div>
     </Form>
   );
 }
 
-export default App;
+export default RegisterForm;

@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import { t } from "i18next";
 
 function MainPage() {
-  const [component, setComponent] = useState("login"); // ["login", "register"]"
+  const [component, setComponent] = useState("login"); 
   return (
     <section
       style={{
@@ -19,12 +19,30 @@ function MainPage() {
         justifyContent: "center",
         height: "100vh",
       }}>
+
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: -1,
+          opacity: 0.75,
+          overflowY: "hidden",
+        }}>
+        <LogoSvg />
+      </div>
+
       <header
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          width: "100%",
+          width: "100vw",
           padding: "1rem",
           position: "absolute",
           height: "4rem",
@@ -33,45 +51,15 @@ function MainPage() {
         }}>
         <LanguageDropdown />
       </header>
-      <div>
-        <div
-          style={{
-            width: "100vw",
-            height: "100vh",
-            position: "absolute",
-            top: 0,
-            left: 0,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: -1,
-            opacity: 0.75,
-            overflowY: "hidden",
-          }}>
-          <LogoSvg />
-        </div>
-        {component === "login" && <LoginForm />}
-        {component === "register" && <RegisterForm />}
-        <div
-          onClick={() => {
-            setComponent(component === "login" ? 'register' : 'login');
-          }}
-          style={{
-            color: "#000",
-            width: "100%",
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
-            cursor: "pointer",
-            transform: "translate(-1rem, -2rem)",
-          }}>
-          <span
-            style={{
-              color: "blue",
-            }}>
-            {component === "login" ? t("registration"): t("login")}
-          </span>
-        </div>
+      <div style={{
+        width: '100vw',
+        overflowX: 'hidden',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+        {component === "login" && <LoginForm setComponent={setComponent} />}
+        {component === "register" && <RegisterForm setComponent={setComponent} />}
       </div>
     </section>
   );
